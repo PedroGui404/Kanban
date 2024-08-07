@@ -1,8 +1,8 @@
-import { useMemo,useState } from "react";
+import { useMemo, useState } from "react";
 import { SortableContext, useSortable } from "@dnd-kit/sortable";
 import TrashIcon from "../icons/TrashIcon";
-import { Task, Column, Id} from "../types";
-import {CSS} from "@dnd-kit/utilities"
+import { Task, Column, Id } from "../types";
+import { CSS } from "@dnd-kit/utilities"
 import PlusIcon from "../icons/PlusIcon";
 import TaskCard from "./TaskCard";
 
@@ -11,7 +11,7 @@ interface Props {
     column: Column;
     deleteColumn: (id: Id) => void;
     updateColumn: (id: Id, title: string) => void;
-    
+
     createTask: (columnId: Id) => void;
     updateTask: (id: Id, content: string) => void;
     deleteTask: (id: Id) => void;
@@ -21,7 +21,7 @@ interface Props {
 
 function ColumnContainer(props: Props) {
     const { column, deleteColumn, updateColumn, createTask,
-         tasks, deleteTask, updateTask} = props;
+        tasks, deleteTask, updateTask } = props;
 
     const [editMode, setEditMode] = useState(false);
 
@@ -29,16 +29,16 @@ function ColumnContainer(props: Props) {
         return tasks.map((task) => task.id);
     }, [tasks]);
 
-    const {setNodeRef, attributes, listeners, transform, transition, isDragging}
-    =
-    useSortable({
-        id: column.id,
-        data: {
-            type:"Column",
-            column,
-        },
-        disabled: editMode,
-    });
+    const { setNodeRef, attributes, listeners, transform, transition, isDragging }
+        =
+        useSortable({
+            id: column.id,
+            data: {
+                type: "Column",
+                column,
+            },
+            disabled: editMode,
+        });
 
     const style = {
         transition,
@@ -47,10 +47,10 @@ function ColumnContainer(props: Props) {
 
     if (isDragging) {
         return (
-        <div
-        ref={setNodeRef}
-        style={style}
-        className="
+            <div
+                ref={setNodeRef}
+                style={style}
+                className="
     bg-columnBackgroundColor
     opacity-40
     border-2
@@ -62,16 +62,16 @@ function ColumnContainer(props: Props) {
     flex
     flex-col
     "
-        >      
-        </div>
+            >
+            </div>
         );
     }
 
     return (
         <div
-        ref={setNodeRef}
-        style={style}
-        className="
+            ref={setNodeRef}
+            style={style}
+            className="
     bg-columnBackgroundColor
     w-[350px]
     h-[500px]
@@ -81,13 +81,13 @@ function ColumnContainer(props: Props) {
     flex-col
     "
         >
-            <div 
-            {...attributes}
-            {...listeners}
-            onClick={() =>{
-                setEditMode(true);
-            }}
-            className="
+            <div
+                {...attributes}
+                {...listeners}
+                onClick={() => {
+                    setEditMode(true);
+                }}
+                className="
     bg-mainBackgroundColor
     text-md
     h-[60px]
@@ -118,26 +118,26 @@ function ColumnContainer(props: Props) {
                         0
                     </div>
                     {!editMode && column.title}
-                    {editMode && ( 
-                    <input
-                    className="bg-black focus:border-rose-500 border
+                    {editMode && (
+                        <input
+                            className="bg-black focus:border-rose-500 border
                     rounded outline-none px-2"
-                    value={column.title}
-                    onChange={(e) => updateColumn(column.id, e.target.
-                    value)} 
-                    autoFocus 
-                    onBlur={() =>{
-                        setEditMode(false);
-                    }}
-                        onKeyDown={e => {
-                            if (e.key !== "Enter")return;
-                            setEditMode(false);
-                        }}
-                    />
+                            value={column.title}
+                            onChange={(e) => updateColumn(column.id, e.target.
+                                value)}
+                            autoFocus
+                            onBlur={() => {
+                                setEditMode(false);
+                            }}
+                            onKeyDown={e => {
+                                if (e.key !== "Enter") return;
+                                setEditMode(false);
+                            }}
+                        />
                     )}
                 </div>
                 <button
-                    onClick={() =>{
+                    onClick={() => {
                         deleteColumn(column.id);
                     }}
                     className="
@@ -156,25 +156,25 @@ function ColumnContainer(props: Props) {
 
             <div className="flex flex-grow flex-col gap-4 p-2
             overflow-x-hidden overflow-y-auto">
-                <SortableContext items = {tasksIds}>
-                {tasks.map((task) => (
-                    <TaskCard key={task.id} task={task} deleteTask={deleteTask}
-                    updateTask={updateTask}/>
-                    
-                ))}
+                <SortableContext items={tasksIds}>
+                    {tasks.map((task) => (
+                        <TaskCard key={task.id} task={task} deleteTask={deleteTask}
+                            updateTask={updateTask} />
+
+                    ))}
                 </SortableContext>
             </div>
-            
+
             <button className="flex gap-2 items-center
             border-columnBackgroundColor border-2 rounded-md p-4
             border-x-columnBackgroundColor
             hover:bg-mainBackgroundColor hover:text-sky-900
             active:bg-black"
-            onClick={() => {
-                createTask(column.id);
-            }}
+                onClick={() => {
+                    createTask(column.id);
+                }}
             >
-                <PlusIcon/>
+                <PlusIcon />
                 Adicionar Tarefa
             </button>
         </div>
