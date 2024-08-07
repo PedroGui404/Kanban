@@ -30,7 +30,6 @@ function App() {
             <a href="#" className="text-sm font-semibold leading-6 text-white">Log in <span aria-hidden="true">&rarr;</span></a>
           </div>
         </nav>
-        {/* ... Restante do código ... */}
       </header>
     </div>
   <BoardKanban/>
