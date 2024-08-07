@@ -60,15 +60,15 @@ function BoardKanban() {
                         }}
                         className="
             h-[60px]
-            w-[350px]
-            min-w-[350px]
+            w-[200px]
+            min-w-[200px]
             cursor-pointer
             rounded-lg
             bg-mainBackgroundColor
             border-2
             border-columnBackgroundColor
             p-4
-            ring-rose-500
+            ring-sky-900
             hover:ring-2
             flex
             gap-2

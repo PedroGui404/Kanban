@@ -49,7 +49,7 @@ function ColumnContainer(props: Props) {
     bg-columnBackgroundColor
     opacity-40
     border-2
-    border-rose-500
+    border-sky-900
     w-[350px]
     h-[500px]
     max-h-[500px]
@@ -160,7 +160,7 @@ function ColumnContainer(props: Props) {
             <button className="flex gap-2 items-center
             border-columnBackgroundColor border-2 rounded-md p-4
             border-x-columnBackgroundColor
-            hover:bg-mainBackgroundColor hover:text-rose-500
+            hover:bg-mainBackgroundColor hover:text-sky-900
             active:bg-black"
             onClick={() => {
                 createTask(column.id);
