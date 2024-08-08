@@ -116,7 +116,8 @@ function TaskCard({ task, deleteTask, updateTask }: Props) {
                     <TrashIcon />
                 </button>)}
             {!mouseIsOver && (
-                <ProfilePhoto/>)}
+                <ProfilePhoto/>
+                )}
         </div>
     )
 }
