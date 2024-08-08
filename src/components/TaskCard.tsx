@@ -3,6 +3,7 @@ import TrashIcon from "../icons/TrashIcon";
 import { Id, Task } from "../types";
 import { useSortable } from "@dnd-kit/sortable";
 import { CSS } from "@dnd-kit/utilities"
+import ProfilePhoto from "./ProfilePhoto";
 
 interface Props {
     task: Task;
@@ -46,6 +47,7 @@ function TaskCard({ task, deleteTask, updateTask }: Props) {
         relative opacity-60 border-sky-900"
 
             />
+            
         );
     }
 
@@ -102,6 +104,7 @@ function TaskCard({ task, deleteTask, updateTask }: Props) {
             overflow-x-hidden whitespace-pre-wrap"
             >
                 {task.content}</p>
+
             {mouseIsOver && (
                 <button
                     onClick={() => {
@@ -112,6 +115,8 @@ function TaskCard({ task, deleteTask, updateTask }: Props) {
             opacity-60 hover:opacity-100">
                     <TrashIcon />
                 </button>)}
+            {!mouseIsOver && (
+                <ProfilePhoto/>)}
         </div>
     )
 }
